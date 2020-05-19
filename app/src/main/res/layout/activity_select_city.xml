@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="选择城市"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:background="@color/white"
+        />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+
+
+        <!--因为上部分要划走，RecyclerView滑动过程中要A,B,C置顶，所以采用CoordinatorLayout-->
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/abl_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_select_city_head"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="15dp"
+                        app:layout_collapseMode="pin"
+                        xmlns:zhy="http://schemas.android.com/tools">
+
+                        <TextView
+                            android:id="@+id/tv_city_location_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="16dp"
+                            android:text="当前定位"
+                            android:textColor="@color/c_757575"
+                            android:textSize="12sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_city_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_city_location_title"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_city_location_title"
+                            android:gravity="center"
+                            android:drawablePadding="8dp"
+                            android:text="广州市（假的）"
+                            android:layout_marginTop="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/c_33"
+                            android:textStyle="bold"
+                            />
+
+                        <View
+                            android:id="@+id/v_line1"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:background="@color/c_f2efef"
+                            app:layout_constraintTop_toBottomOf="@id/tv_city_location"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:layout_marginTop="15dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_hot_city_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintLeft_toLeftOf="@id/tv_city_location_title"
+                            app:layout_constraintTop_toBottomOf="@id/v_line1"
+                            android:layout_marginTop="10dp"
+                            android:text="热门城市"
+                            android:textSize="12sp"
+                            android:textColor="@color/c_757575"
+                            />
+
+                        <!--热门城市，做好兼容，可能有很多-->
+                        <com.zhy.view.flowlayout.TagFlowLayout
+                            android:id="@+id/tfl_home_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_hot_city_title"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            zhy:max_select="1" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+
+                </android.support.design.widget.CollapsingToolbarLayout>
+
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </android.support.design.widget.CoordinatorLayout>
+
+
+
+        <!--字母之间的距离有高度决定，自定适应-->
+        <com.cong.coordinatorlayoutdemo.widget.QuickLocationBar
+            android:id="@+id/qlb_letter"
+            android:layout_width="24dp"
+            android:layout_height="450dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="86dp"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

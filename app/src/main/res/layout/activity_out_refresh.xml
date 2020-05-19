@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="头部刷新"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:background="@color/white"
+        />
+
+    <android.support.constraint.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+
+        >
+
+        <com.ccr.ccrecyclerviewlibrary.view.refreshlayout.RefreshLayout
+            android:id="@+id/mRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/app_bar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <!--可以滑走-->
+                    <android.support.design.widget.CollapsingToolbarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/common_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_collapseMode="pin" />
+
+
+                        <!--                    <include layout="@layout/common_only_refreshlayout"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        app:layout_collapseMode="pin"/>-->
+
+                        <!--                    <android.support.constraint.ConstraintLayout-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        app:layout_collapseMode="pin"-->
+                        <!--                        >-->
+
+
+                        <!--                    </android.support.constraint.ConstraintLayout>-->
+
+                    </android.support.design.widget.CollapsingToolbarLayout>
+
+                    <!--滑动悬停-->
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.flyco.tablayout.SlidingTabLayout
+                            android:id="@+id/stl_ceo_data"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tl_indicator_color="@color/color_D5100A"
+                            app:tl_indicator_height="2dp"
+                            app:tl_indicator_width="21dp"
+                            app:tl_tab_space_equal="true"
+                            app:tl_textBold="BOTH"
+                            app:tl_textSelectColor="@color/color_D5100A"
+                            app:tl_textUnselectColor="@color/c_33"
+                            app:tl_textsize="16sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@color/c_f2efef"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/stl_ceo_data" />
+                    </android.support.constraint.ConstraintLayout>
+
+
+                </android.support.design.widget.AppBarLayout>
+
+                <!--协调联动-->
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_pager_ceo_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            </android.support.design.widget.CoordinatorLayout>
+
+        </com.ccr.ccrecyclerviewlibrary.view.refreshlayout.RefreshLayout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.JianShuHomeActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl_js"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <!--scroll代表头部与主体一起滚动-->
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_haizeiwang"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/haizeiwang2"/>
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="我是搜索"
+                    android:background="@null"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintRight_toLeftOf="@id/tv_redpackage"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_haizeiwang"/>
+
+                <TextView
+                    android:id="@+id/tv_redpackage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我是红包"
+                    app:layout_constraintLeft_toRightOf="@id/et_search"
+                    app:layout_constraintTop_toTopOf="@id/et_search"
+                    app:layout_constraintBottom_toBottomOf="@id/et_search"
+                    app:layout_constraintRight_toRightOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <!--不加layout_scrollFlags就悬停,默认就是scroll|enterAlways-->
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/stl_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tl_indicator_color="@android:color/holo_red_dark"
+            app:tl_indicator_height="2dp"
+            app:tl_indicator_width="21dp"
+            app:tl_tab_space_equal="true"
+            app:tl_textBold="BOTH"
+            app:tl_textSelectColor="@android:color/holo_red_dark"
+            app:tl_textUnselectColor="@android:color/black"
+            app:tl_textsize="16sp" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--记得主体layout_height设为match_parent，避免滑动触碰过小没法滑动误以为设置出错-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+</android.support.design.widget.CoordinatorLayout>
