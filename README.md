@@ -1,4 +1,4 @@
-###Android案例分享系列--悬停列表
+Android案例分享系列--悬停列表  
 关键：协调布局CoordinatorLayout   
 方法：app:layout_behavior，指定子视图相对于其他视图的行为，当对方的位置发生变化时，本视图的位置也要随之变化
 
@@ -7,7 +7,7 @@
 2、捕捉到滚动操作之后，通知下级节点你要怎么滚   
 如app:layout_behavior="@string/appbar_scrolling_view_behavior" 表示通知AppBarLayout捕捉RecycleView的滚动操作
 
-####应用场景1：
+应用场景1：
     <android.support.design.widget.CoordinatorLayout
 
 	<android.support.design.widget.AppBarLayout
@@ -23,7 +23,7 @@
 	<RecycleView
 		app:layout_behavior="@string/appbar_scrolling_view_behavior">
 	</RecycleView></android.support.design.widget.CoordinatorLayout>
-####应用场景2：
+应用场景2：
 RecyclerView添头部有问题或者添头部不满足需要，就可以考虑用  CoordinatorLayout ， AppBarLayout 和 CollapsingToolbarLayout组合解决问题  
 
     <android.support.design.widget.CoordinatorLayout
